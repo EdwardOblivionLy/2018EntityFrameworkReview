@@ -8,12 +8,18 @@ using WestWindConsole.Entities;
 
 namespace WestWindConsole.DAL
 {
+    // My database context class is a "virtual representation" of the database, with each DbSet<T> property referencing a particular table in the database. 
+    // It inherits from the DbContext class. 
     public class WestWindContext : DbContext
     {
         public WestWindContext() : base("name=WWdb")
         {
             // TODO: Demonstrate null database initializer
+            // Tells EF(Entity Framework) that it should NOT create any tables in the database on my behalf. 
+            // (null == no initializer)
+            // This is an example of disabling database initialization programmatically. 
             Database.SetInitializer<WestWindContext>(null);
+            // An alternative to this would be to disable database initialization in the .config file. 
         }
 
         public DbSet<Product> Products { get; set; }
