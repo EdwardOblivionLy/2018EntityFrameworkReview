@@ -49,9 +49,33 @@ namespace WestWindConsole
                         DisplayShippers();
                         break;
                     // TODO: Practice - Display methods for remaining tables
+                    case 9:
+                        DisplayRegions();
+                        break;
+                    case 10:
+                        DisplayTerritories();
+                        break;
+                    case 11:
+                        DisplayPaymentTypes();
+                        break;
+                    case 12:
+                        DisplayAddresses();
+                        break;
+                    case 13:
+                        DisplayCustomers();
+                        break;
+                    case 14:
+                        DisplayPayments();
+                        break;
+                    case 15:
+                        DisplayOrders();
+                        break;
+                    case 16:
+                        DisplayManifestItems();
+                        break;
                 }
                 Pause();
-            } while (menuChoice > 0 && menuChoice <= 15);
+            } while (menuChoice > 0 && menuChoice <= 16);
         }
 
         private void Pause()
@@ -148,6 +172,78 @@ namespace WestWindConsole
             }
         }
 
+        private void DisplayRegions()
+        {
+            using (var context = new WestWindContext())
+            {
+                int count = context.Regions.Count();
+                Console.WriteLine($"There are {count} regions");
+            }
+        }
+
+        private void DisplayTerritories()
+        {
+            using (var context = new WestWindContext())
+            {
+                int count = context.Territories.Count();
+                Console.WriteLine($"There are {count} territories");
+            }
+        }
+
+        private void DisplayPaymentTypes()
+        {
+            using (var context = new WestWindContext())
+            {
+                int count = context.PaymentTypes.Count();
+                Console.WriteLine($"There are {count} payment types");
+            }
+        }
+
+        private void DisplayAddresses()
+        {
+            using (var context = new WestWindContext())
+            {
+                int count = context.Addresses.Count();
+                Console.WriteLine($"There are {count} addresses");
+            }
+        }
+
+        private void DisplayCustomers()
+        {
+            using (var context = new WestWindContext())
+            {
+                int count = context.Customers.Count();
+                Console.WriteLine($"There are {count} customers");
+            }
+        }
+
+        private void DisplayPayments()
+        {
+            using (var context = new WestWindContext())
+            {
+                int count = context.Payments.Count();
+                Console.WriteLine($"There are {count} payments");
+            }
+        }
+
+        private void DisplayOrders()
+        {
+            using (var context = new WestWindContext())
+            {
+                int count = context.Orders.Count();
+                Console.WriteLine($"There are {count} orders");
+            }
+        }
+
+        private void DisplayManifestItems()
+        {
+            using (var context = new WestWindContext())
+            {
+                int count = context.ManifestItems.Count();
+                Console.WriteLine($"There are {count} manifest items");
+            }
+        }
+
         private int ChooseTable()
         {
             Console.WriteLine("1) Products");
@@ -159,6 +255,14 @@ namespace WestWindConsole
             Console.WriteLine("7) Shipments");
             Console.WriteLine("8) Shippers");
             // TODO: Practice - Menu options for remaining tables
+            Console.WriteLine("9) Regions");
+            Console.WriteLine("10) Territories");
+            Console.WriteLine("11) Payment Types");
+            Console.WriteLine("12) Addresses");
+            Console.WriteLine("13) Customers");
+            Console.WriteLine("14) Payments");
+            Console.WriteLine("15) Orders");
+            Console.WriteLine("16) Manifest Items");
 
             Console.Write("Select a table (or 0 to exit): ");
             int choice = int.Parse(Console.ReadLine());
